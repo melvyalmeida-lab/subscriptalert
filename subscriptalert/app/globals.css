@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background: #E84B2F;
+    color: white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #EDE9E1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #D9D4CB;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0D0D0D;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-ink text-paper font-display font-semibold px-5 py-2.5 rounded-lg text-sm 
+    transition-all duration-200 hover:bg-ink-muted active:scale-95 
+    disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .btn-danger {
+    @apply bg-signal text-white font-display font-semibold px-5 py-2.5 rounded-lg text-sm 
+    transition-all duration-200 hover:bg-signal-soft active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-ink font-display font-medium px-4 py-2 rounded-lg text-sm
+    transition-all duration-200 hover:bg-paper-warm active:scale-95 border border-paper-muted;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl border border-paper-warm shadow-sm;
+  }
+
+  .input {
+    @apply w-full bg-paper-warm border border-paper-muted rounded-lg px-4 py-2.5
+    font-body text-sm text-ink placeholder:text-ink-muted/50
+    focus:outline-none focus:ring-2 focus:ring-ink/20 focus:border-ink
+    transition-all duration-200;
+  }
+
+  .label {
+    @apply block text-xs font-display font-semibold text-ink-muted uppercase tracking-wider mb-1.5;
+  }
+
+  .badge-urgent {
+    @apply bg-signal-pale text-signal text-xs font-mono font-medium px-2 py-0.5 rounded-full;
+  }
+
+  .badge-soon {
+    @apply bg-warn-pale text-warn text-xs font-mono font-medium px-2 py-0.5 rounded-full;
+  }
+
+  .badge-ok {
+    @apply bg-safe-pale text-safe text-xs font-mono font-medium px-2 py-0.5 rounded-full;
+  }
+}
+
+/* Staggered animation delays */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.10s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.20s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.30s; }
+
+/* Grain texture overlay */
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+}
